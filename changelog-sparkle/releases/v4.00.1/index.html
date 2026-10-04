@@ -1,28 +1,45 @@
 <!doctype html>
 <html lang="en">
-<head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width,initial-scale=1">
-  <title>Dock Exposé 4.00.1 release notes</title>
-  <link rel="stylesheet" href="/docs/style.css">
-</head>
-<body>
-  <main>
-    <p class="back"><a href="/changelog-sparkle">← Changelog</a></p>
-    <h1>Dock Exposé 4.00.1 release notes</h1>
-    <p>Changes since <code>v4.00.0</code>:</p>
-    <ul>
-      <li>Dock clicks open the Trash when it launches a not-running Finder.</li>
-      <li>Dock clicks let users dismiss an open Dock context menu.</li>
-      <li>Dock clicks send new-window Cmd-N to the app&#x27;s process.</li>
-      <li>Windows only preview root, non-auxiliary surfaces.</li>
-      <li>Window controls follow a window created while expose is open.</li>
-      <li>Window controls follow the grid while a minimize animates.</li>
-      <li>Window controls exit App Exposé when closing the last non-minimized window.</li>
-      <li>Folder preview never collapses while QuickLook is open; collapses on leave and resyncs state.</li>
-      <li>Bottom bar reflects a recent&#x27;s new order after clicking it, raises it for the first minimize, and rebuilds when the minimized set changes.</li>
-      <li>Hover preview adds a Preview Folders setting.</li>
-    </ul>
-  </main>
-</body>
+	<head>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width,initial-scale=1" />
+		<title>Dock Exposé 4.00.1 release notes</title>
+		<link rel="stylesheet" href="/docs/style.css" />
+	</head>
+	<body>
+		<main>
+			<p class="back"><a href="/changelog-sparkle">← Changelog</a></p>
+			<h1>Dock Exposé 4.00.1 release notes</h1>
+			<p>Changes since <code>v4.00.0</code>:</p>
+			<ul>
+				Fixed bugs/crashes:
+				<li>
+					Mission Control / App Exposé close button/title positions
+					become stale.
+				</li>
+				<li>
+					Shift+Click dock icon (new window) now works while App
+					Exposé is open.
+				</li>
+				<li>
+					Clicking out of a context menu (on a dock icon) would also
+					run the dock icon action (hide/unhide etc.).
+				</li>
+				<li>
+					App auxilliary windows (i.e. panels) counted as previewable
+					windows.
+				</li>
+				Other:
+				<li>Add "Preview Folders" Setting.</li>
+				<li>
+					Exit App Exposé when closing the last non-minimized window.
+				</li>
+				<li>Recent items list updates as you open or delete.</li>
+				<li>
+					Trash/Finder click (and not running) -&gt; launch + make new
+					window.
+				</li>
+			</ul>
+		</main>
+	</body>
 </html>

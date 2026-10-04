@@ -69,16 +69,16 @@
             <ul>
               <span>4.00.1 release</span>
               <h7><a href="https://dockexpose.netlify.app/changelog-sparkle/releases/v4.00.1/">v4.00.1</a></h7>
-              <li>Dock clicks open the Trash when it launches a not-running Finder.</li>
-              <li>Dock clicks let users dismiss an open Dock context menu.</li>
-              <li>Dock clicks send new-window Cmd-N to the app's process.</li>
-              <li>Windows only preview root, non-auxiliary surfaces.</li>
-              <li>Window controls follow a window created while expose is open.</li>
-              <li>Window controls follow the grid while a minimize animates.</li>
-              <li>Window controls exit App Exposé when closing the last non-minimized window.</li>
-              <li>Folder preview never collapses while QuickLook is open; collapses on leave and resyncs state.</li>
-              <li>Bottom bar reflects a recent's new order after clicking it, raises it for the first minimize, and rebuilds when the minimized set changes.</li>
-              <li>Hover preview adds a Preview Folders setting.</li>
+              Fixed bugs/crashes:
+              <li>Mission Control / App Exposé close button/title positions become stale.</li>
+              <li>Shift+Click dock icon (new window) now works while App Exposé is open.</li>
+              <li>Clicking out of a context menu (on a dock icon) would also run the dock icon action (hide/unhide etc.).</li>
+              <li>App auxilliary windows (i.e. panels) counted as previewable windows.</li>
+              Other:
+              <li>Add "Preview Folders" Setting.</li>
+              <li>Exit App Exposé when closing the last non-minimized window.</li>
+              <li>Recent items list updates as you open or delete.</li>
+              <li>Trash/Finder click (and not running) -&gt; launch + make new window.</li>
             </ul>
           </li>
           <li>
