@@ -35,6 +35,15 @@ VERSION=$(printf '%s\n' "$BUILD_SETTINGS" | awk -F ' = ' '/^[[:space:]]+MARKETIN
 BUILD_VERSION=$(printf '%s\n' "$BUILD_SETTINGS" | awk -F ' = ' '/^[[:space:]]+CURRENT_PROJECT_VERSION = / { print $2; exit }')
 ZIP="$HOME/Downloads/Dock-Expose-$VERSION.zip"
 
+# make-release.sh updates the Xcode version/build settings. Commit that
+# release metadata before publish-release tags the source repository, while
+# leaving unrelated source changes untouched.
+SOURCE_PROJECT_FILE="$SOURCE_ROOT/Dock Expose.xcodeproj/project.pbxproj"
+if ! git -C "$SOURCE_ROOT" diff --quiet -- "$SOURCE_PROJECT_FILE"; then
+    git -C "$SOURCE_ROOT" add -- "$SOURCE_PROJECT_FILE"
+    git -C "$SOURCE_ROOT" commit -m "prepare Dock Exposé v$VERSION"
+fi
+
 [ -f "$ZIP" ] || {
     echo "error: expected release ZIP was not created: $ZIP" >&2
     exit 1
