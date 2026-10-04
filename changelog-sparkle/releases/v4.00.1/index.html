@@ -12,14 +12,15 @@
 			<h1>Dock Exposé 4.00.1 release notes</h1>
 			<p>Changes since <code>v4.00.0</code>:</p>
 			<ul>
-				Fixed bugs:
-				<li>
-					Mission Control / App Exposé close button/title positions
-					become stale.
-				</li>
+				Fixed bugs/crashes:
+				<li>Restore ubuntu/click-to-preview (Linux) mode.</li>
 				<li>
 					Shift+Click dock icon (new window) now works while App
 					Exposé is open.
+				</li>
+				<li>
+					Mission Control / App Exposé close button/title positions
+					were stale after close/minimize.
 				</li>
 				<li>
 					Clicking out of a context menu (on a dock icon) would also
@@ -29,8 +30,10 @@
 					App auxilliary windows (i.e. panels) were counted as
 					previewable windows.
 				</li>
-				<li>Detect tabbed windows.</li>
-				<li>Restore click-to-preview/ubuntu (as Linux) mode.</li>
+				<li>
+					Individual tabs were counted as previewable windows (for
+					apps using native macOS tabs).
+				</li>
 				Other:
 				<li>Add "Preview Folders" Setting.</li>
 				<li>

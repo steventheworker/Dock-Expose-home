@@ -1,21 +1,66 @@
-# Dock-Exposé website
+# Dock Exposé
 
-This is the website for [dockexpose.netlify.app](https://dockexpose.netlify.app).
+This is the public website and release repository for Dock Exposé.
 
-The current release is Dock Exposé 4.00.1. The downloadable app is published as a GitHub Release in this repository; the app itself is closed source.
+Dock Exposé is a macOS app that lets you preview apps and folders on the dock via click or hover, prevents space swooshing, and restores the bottom bar for app exposé after Golden Gate (macOS 27) stopped showing it, leaving users without a familiar way to view recent items and minimized windows for an app. It also provides extras like:
 
-See the [permissions guide](https://dockexpose.netlify.app/docs/permissions) and [compatibility information](https://dockexpose.netlify.app/#introduction) before installing.
+- Edit recent items directly in app exposé or force the bottom-bar to show outside it (Fn+R)
+- ⌘+click to cycle windows, ⇧+click to make a new window
+- adds close/minimize buttons to Mission Control / App Exposé
+- click to toggle hide/show dock apps
+- preview folders on the dock
 
-## Publishing a release
+### Dock Exposé app download link:
 
-The release script signs an archive, updates the appcast and current-release website information, and generates release notes from the closed-source app repository's `git log` since its last `v*` tag. When a local llama-server is available, pi turns those commits into user-facing bullets; otherwise the raw source commit list is used:
+Latest release: **Dock Exposé 4.00.1**
 
-```sh
-scripts/publish-release.sh 4.00.1 Dock-Expose-4.00.1.zip \
-  --generate-notes \
-  --tag \
-  --push-site \
-  --create-release
-```
+https://github.com/steventheworker/Dock-Expose-home/releases/download/v4.00.1/Dock-Expose-4.00.1.zip
 
-`--tag` creates an annotated `vVERSION` tag in the closed-source app repository. With `--push-site`, that source tag is pushed along with the website branch; use `--push-tag` instead when pushing only the source tag. The script does not build the app or change the Xcode project version; it reads and validates the version/build embedded in the supplied archive. `--build-version` is available only as an explicit override. Release notes contain no source-repository comparison link.
+You can also browse all releases on the [Dock Exposé GitHub Releases page](https://github.com/steventheworker/Dock-Expose-home/releases).
+
+## Installation
+
+1. Download the ZIP from the release link above.
+2. Double-click the ZIP to extract Dock Exposé.
+3. Move `Dock Exposé.app` to your Applications folder.
+4. Open the app from Applications.
+5. Complete the permissions setup when Dock Exposé asks for it.
+
+Dock Exposé is distributed unnotarized. If macOS prevents the first launch, Control-click or right-click the app, choose **Open**, and confirm that you want to open it. After the first launch, it can be opened normally.
+
+## Required permissions (2)
+
+### Accessibility
+
+Accessibility access allows Dock Exposé to observe and manage application windows, display previews in response to Dock and Exposé actions, and perform window controls such as close and minimize.
+
+Enable it in **System Settings → Privacy & Security → Accessibility**.
+
+### Screen Recording
+
+Screen Recording access is required even when the custom bottom bar is disabled. macOS protects the information Dock Exposé needs to identify windows and display their contents behind this permission.
+
+Screen Recording allows Dock Exposé to:
+
+- read window titles
+- screenshot minimized windows (for display in the custom bottom bar)
+
+### Optional: Full Disk Access
+
+Needed for the Recents Editor to read and edit recent-document information that macOS stores in protected locations. If you do not use the Recents Editor's recent-file features, you can leave Full Disk Access disabled.
+
+For more detail, see the [permissions and setup guide](https://dockexpose.netlify.app/docs/permissions).
+
+## Compatibility
+
+- Apple-silicon Mac
+- macOS 26 or macOS 27
+- Accessibility permission enabled
+- Screen Recording permission enabled
+- Full Disk Access optional, only for protected recent-document access
+
+## More information
+
+Visit [dockexpose.netlify.app](https://dockexpose.netlify.app) for documentation, screenshots, compatibility details, and the changelog.
+
+### Also: Check out https://dockalttab.netlify.app
