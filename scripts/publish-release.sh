@@ -122,13 +122,28 @@ fi
 }
 
 if [ -z "$SIGN_UPDATE" ]; then
-    OLD_SIGN_UPDATE="$HOME/proj/obj-c/Dock-Expose-pre-macos27/Pods/Sparkle/bin/sign_update"
-    if [ -x "$OLD_SIGN_UPDATE" ]; then
-        SIGN_UPDATE=$OLD_SIGN_UPDATE
-    fi
+    # Prefer the old checkout when it is available, but also support the
+    # current SPM integration. Xcode places Sparkle's signing tool inside the
+    # project's DerivedData SourcePackages artifacts directory.
+    for OLD_SIGN_UPDATE in \
+        "$HOME/proj/obj-c/Dock-Expose-pre-macos27/Pods/Sparkle/bin/sign_update" \
+        "$HOME/proj/obj-c/_archives/Dock-Expose-pre-macos27/Pods/Sparkle/bin/sign_update"; do
+        if [ -x "$OLD_SIGN_UPDATE" ]; then
+            SIGN_UPDATE=$OLD_SIGN_UPDATE
+            break
+        fi
+    done
+fi
+if [ -z "$SIGN_UPDATE" ]; then
+    SIGN_UPDATE=$(find "$HOME/Library/Developer/Xcode/DerivedData" \
+        -type f \
+        -path '*/SourcePackages/artifacts/sparkle/Sparkle/bin/sign_update' \
+        -print -quit 2>/dev/null || true)
 fi
 [ -n "$SIGN_UPDATE" ] && [ -x "$SIGN_UPDATE" ] || {
-    echo "error: set SPARKLE_SIGN_UPDATE or pass --sign-update PATH" >&2
+    echo "error: Sparkle sign_update was not found." >&2
+    echo "       Set SPARKLE_SIGN_UPDATE or pass --sign-update PATH." >&2
+    echo "       Expected an SPM artifact under ~/Library/Developer/Xcode/DerivedData." >&2
     exit 1
 }
 
@@ -432,7 +447,7 @@ update(landing_path, "        <h4>Version Control / Changelog:</h4>", "         
 PY
 fi
 
-SITE_FILES="appcast.xml currentversion.txt index.html README.md changelog-sparkle/index.html docs/index.html docs/permissions/index.html"
+SITE_FILES="appcast.xml currentversion.txt index.html README.md changelog-sparkle/index.html docs/index.html docs/permissions/index.html scripts/publish-release.sh scripts/deploy.sh"
 if [ -n "$NOTES_FILE" ]; then
     SITE_FILES="$SITE_FILES ${NOTES_FILE#"$ROOT/"}"
 fi
