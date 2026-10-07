@@ -386,7 +386,9 @@ if [ "$TAG_RELEASE" -eq 1 ] || [ "$PUSH_SITE" -eq 1 ]; then
     # shellcheck disable=SC2086
     git -C "$ROOT" add $SITE_FILES
     if ! git -C "$ROOT" diff --cached --quiet; then
-        git -C "$ROOT" commit -m "$(printf '%s' "${SITE_COMMIT_MSG:-publish $PRODUCT_NAME v{VERSION}}" | sed "s/{VERSION}/$VERSION/g")"
+        SITE_MSG=${SITE_COMMIT_MSG:-}
+        [ -n "$SITE_MSG" ] || SITE_MSG="publish $PRODUCT_NAME v{VERSION}"
+        git -C "$ROOT" commit -m "$(printf '%s' "$SITE_MSG" | sed "s/{VERSION}/$VERSION/g")"
     fi
 fi
 
@@ -404,7 +406,9 @@ fi
 
 if [ "$CREATE_RELEASE" -eq 1 ]; then
     command -v gh >/dev/null 2>&1 || { echo "error: gh is required for --create-release" >&2; exit 1; }
-    TITLE=$(printf '%s' "${RELEASE_TITLE:-$PRODUCT_NAME {VERSION}}" | sed "s/{VERSION}/$VERSION/g")
+    TITLE=${RELEASE_TITLE:-}
+    [ -n "$TITLE" ] || TITLE="$PRODUCT_NAME {VERSION}"
+    TITLE=$(printf '%s' "$TITLE" | sed "s/{VERSION}/$VERSION/g")
     if [ -n "${GITHUB_NOTES_FILE:-}" ] && [ -s "$GITHUB_NOTES_FILE" ]; then
         NOTES_ARG="--notes-file $GITHUB_NOTES_FILE"
     else

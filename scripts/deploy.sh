@@ -44,7 +44,9 @@ ZIP="$HOME/Downloads/$(printf '%s' "$RELEASE_ZIP_NAME" | sed "s/{VERSION}/$VERSI
 # Commit the release metadata the build just bumped, leaving other changes be.
 if [ -n "${SOURCE_METADATA_FILE:-}" ] && ! git -C "$SOURCE_ROOT" diff --quiet -- "$SOURCE_METADATA_FILE"; then
     git -C "$SOURCE_ROOT" add -- "$SOURCE_METADATA_FILE"
-    git -C "$SOURCE_ROOT" commit -m "$(printf '%s' "${SOURCE_METADATA_COMMIT_MSG:-chore(release): prepare $PRODUCT_NAME v{VERSION}}" | sed "s/{VERSION}/$VERSION/g")"
+    META_MSG=${SOURCE_METADATA_COMMIT_MSG:-}
+    [ -n "$META_MSG" ] || META_MSG="chore(release): prepare $PRODUCT_NAME v{VERSION}"
+    git -C "$SOURCE_ROOT" commit -m "$(printf '%s' "$META_MSG" | sed "s/{VERSION}/$VERSION/g")"
 fi
 
 [ -f "$ZIP" ] || { echo "error: expected release ZIP was not created: $ZIP" >&2; exit 1; }
