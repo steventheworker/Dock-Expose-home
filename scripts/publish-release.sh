@@ -225,7 +225,7 @@ PY
         then
             if python3 - "$MODEL_OUTPUT" "$BULLETS_FILE" "$RELEASE_NOTES_EXCLUDE" <<'PY'
 import pathlib, re, sys
-source, destination, extra = map(str, sys.argv[1:4])
+source, destination, extra = sys.argv[1], pathlib.Path(sys.argv[2]), sys.argv[3]
 extra_re = re.compile(extra) if extra else None
 seen, bullets = set(), []
 for raw in pathlib.Path(source).read_text().splitlines():
@@ -260,7 +260,7 @@ PY
         BULLETS_FILE="$TMP_DIR/bullets.txt"
         python3 - "$RAW_LOG" "$BULLETS_FILE" "$RELEASE_NOTES_EXCLUDE" <<'PY'
 import pathlib, re, sys
-source, destination, extra = map(str, sys.argv[1:4])
+source, destination, extra = sys.argv[1], pathlib.Path(sys.argv[2]), sys.argv[3]
 extra_re = re.compile(extra) if extra else None
 groups = {"feat": [], "fix": [], "perf": [], "other": []}
 for line in pathlib.Path(source).read_text().splitlines():
