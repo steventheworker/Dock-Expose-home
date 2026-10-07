@@ -189,7 +189,7 @@ Write concise, user-facing release notes for Dock Exposé {version}.
 
 Project context: {project}
 
-Use the source commit subjects below as evidence. Do not browse the project or invent details. Group related changes when useful. Prefer 4-12 concrete bullets, each a short sentence beginning with an action or user benefit. Ignore changes clearly unrelated to the macOS app or release tooling. Do not mention commits, hashes, GitHub, source code, a full changelog, internal implementation details, Linux, or tabs. Return only one plain-text bullet per line with no heading, preamble, code fence, or numbering. These bullets will be shown directly on the public website.
+Use the source commit subjects below as evidence. Do not browse the project or invent details. Group related changes when useful. Prefer 4-12 concrete bullets, each a short sentence beginning with an action or user benefit. Ignore changes clearly unrelated to the macOS app or release tooling, including deployment and version-bump commits. Do not mention commits, hashes, GitHub, source code, a full changelog, internal implementation details, Linux, or tabs. Return only one plain-text bullet per line with no heading, preamble, code fence, or numbering. These bullets will be shown directly on the public website.
 
 The changes are{context}:
 {raw}
@@ -234,7 +234,9 @@ for raw in source.read_text().splitlines():
     lower = line.lower()
     if lower.startswith(("here are ", "changes since ", "changes:")):
         continue
-    if (lower.endswith("release notes") or "linux" in lower or "picohook" in lower
+    if (lower.endswith("release notes") or lower == "deploy"
+        or "prepare dock exposé v" in lower or "version bump" in lower
+        or "linux" in lower or "picohook" in lower
         or "ax notification" in lower or re.search(r"\btabs?\b", lower)):
         continue
     if line not in seen and len(line) <= 300:
@@ -269,7 +271,9 @@ for line in source.read_text().splitlines():
     if "\t" in line:
         commit, subject = line.split("\t", 1)
         lower = subject.lower()
-        if ("linux" in lower or "picohook" in lower or "ax notification" in lower
+        if (lower == "deploy" or "prepare dock exposé v" in lower
+                or "version bump" in lower or "linux" in lower
+                or "picohook" in lower or "ax notification" in lower
                 or re.search(r"\btabs?\b", lower)):
             continue
         bullets.append(f"{subject} [{commit}]")
