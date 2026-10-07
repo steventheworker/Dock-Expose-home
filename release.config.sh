@@ -9,6 +9,9 @@ IS_OPEN_SOURCE="0"
 SOURCE_REPOSITORY=""
 RELEASE_REPOSITORY="steventheworker/Dock-Expose-home"
 SITE_URL="https://dockexpose.netlify.app"
+HOME_REPOSITORY="steventheworker/Dock-Expose-home"
+REPO_DESCRIPTION="Dock and App Exposé window previews, plus window management, for macOS 26 and 27."
+REPO_TOPICS="macos dock window-management app-expose objective-c apple-silicon"
 
 # --- source app ---------------------------------------------------------------
 SOURCE_ROOT="${DOCK_EXPOSE_SOURCE_ROOT:-$HOME/proj/obj-c/Dock-Expose}"
