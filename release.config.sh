@@ -36,4 +36,4 @@ RELEASE_TITLE="Dock Exposé {VERSION}"
 SITE_COMMIT_MSG="publish Dock Exposé v{VERSION}"
 
 # Files the canonical publisher stages (the appcast is added automatically).
-SITE_FILES="index.html README.md docs/index.html docs/permissions/index.html changelog-sparkle/index.html"
+SITE_FILES="index.html README.md currentversion.txt docs/index.html docs/permissions/index.html changelog-sparkle/index.html scripts/update-site.sh"

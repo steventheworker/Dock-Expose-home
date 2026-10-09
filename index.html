@@ -32,8 +32,8 @@
         <h4>
           download link:
           <a style="word-break: break-all;"
-            href="https://github.com/steventheworker/Dock-Expose-home/releases/download/v4.00.2/Dock-Expose-4.00.2.zip"
-            >https://github.com/steventheworker/Dock-Expose-home/releases/download/v4.00.2/Dock-Expose-4.00.2.zip</a
+            href="https://github.com/steventheworker/Dock-Expose-home/releases/download/v4.00.3/Dock-Expose-4.00.3.zip"
+            >https://github.com/steventheworker/Dock-Expose-home/releases/download/v4.00.3/Dock-Expose-4.00.3.zip</a
           >
         </h4>
         <h1 id="introduction" style="margin-top: 1em">Introduction</h1>
@@ -43,7 +43,7 @@
           <p class="seo-text">Introducing Dock Expose, an app that gives a preview of your open applications. Dock Expose opens Apple's expose view in mission control. It does so automatically whenever you put your mouse under an application's dock's icon.</p>
         </p>
         <section class="release-info">
-          <h2>Dock Exposé 4.00.2</h2>
+          <h2>Dock Exposé 4.00.3</h2>
           <ul>
             <li>Rebuilt for modern macOS, with accumulated bug fixes.</li>
             <li>Close windows or hold Option to minimize them from Mission Control and App Exposé.</li>
@@ -65,6 +65,24 @@
       </header>
         <ul class="changelog youtubePreviewMode">
         <h4>Version Control / Changelog:</h4>
+          <li>
+            <ul>
+              <span>4.00.3 release</span>
+              <h7><a href="https://dockexpose.netlify.app/changelog-sparkle/releases/v4.00.3/">v4.00.3</a></h7>
+              <li>Each exposé window now gets 1 set of window-for-all-controls (was 1 per control).</li>
+              <li>Expose bar flashes on top for a second before sinking behind thumbnails.</li>
+              <li>Expose bar sits behind window thumbnails and rises on hover.</li>
+              <li>Cmd-clicking a recent item reveals it in Finder.</li>
+              <li>Expose controls now match windows by tile frame, not title.</li>
+              <li>Mission Control space titles are sized to the titles, not the screen.</li>
+              <li>Mission Control uses one container per display with a subview per space.</li>
+              <li>Mission Control editable space titles follow the expanding top strip.</li>
+              <li>Mission Control overlays rebuild on the now-active space when it changes.</li>
+              <li>Mission Control detects the end of a window drag by polling the button.</li>
+              <li>Expose bar flash prevents immediate tuck when entering preview windows.</li>
+              <li>The ~1s main-thread stall at the start of every expose has been fixed.</li>
+            </ul>
+          </li>
           <li>
             <ul>
               <span>4.00.2 release</span>

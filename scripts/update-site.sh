@@ -20,11 +20,20 @@ for rel in ("index.html", "README.md", "docs/index.html", "docs/permissions/inde
     text = path.read_text()
     if old and old != version:
         text = text.replace(f"Dock Exposé {old}", f"Dock Exposé {version}")
-    text = re.sub(
-        r"https://github\.com/[^/\s\"]+/[^/\s\"]+/releases/download/v[0-9.]+\S+",
-        url,
-        text,
+    # Replace only the current download link. Historical changelog links must
+    # continue pointing to their original release assets.
+    download_pattern = re.compile(
+        r"https://github\.com/[^/\s\"]+/[^/\s\"]+/releases/download/v[0-9.]+/[^\"\s<]+"
     )
+    if rel == "index.html":
+        # The landing page repeats the current URL in both href and link text;
+        # update those two occurrences only, before the historical changelog.
+        intro_marker = '<h1 id="introduction"'
+        before, marker, after = text.partition(intro_marker)
+        if marker:
+            text = download_pattern.sub(url, before) + marker + after
+    elif rel == "README.md":
+        text = download_pattern.sub(url, text, count=1)
     path.write_text(text)
 
 bullets = []
