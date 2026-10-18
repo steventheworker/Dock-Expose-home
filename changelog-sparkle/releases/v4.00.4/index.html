@@ -1,0 +1,30 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Dock Exposé 4.00.4 release notes</title>
+  <link rel="stylesheet" href="/style.css" />
+</head>
+<body>
+  <main>
+    <p class="back"><a href="/changelog-sparkle">&larr; Changelog</a></p>
+    <h1>Dock Exposé 4.00.4 release notes</h1>
+    <p>Changes since <code>v4.00.3</code>:</p>
+    <ul>
+        <li>Fix window description race on title/subrole, filtering non-retryable attributes</li>
+        <li>Fix dead Window.subrole (dangling direct-ivar store)</li>
+        <li>Default Zoom Delay set to 1.2s; only nudge when switching windows</li>
+        <li>Escape undoes zoom, Return activates the zoomed window</li>
+        <li>Skip entry flash when cursor is already on an exposed window</li>
+        <li>Ensure folder preview on exposé close if mouse settled on dock folder</li>
+        <li>Sink expose controls behind Space key zoom in Mission Control &amp; App Exposé</li>
+        <li>Order minimized windows by space then minimize time</li>
+        <li>Fall back to Dock&#x27;s mc group on macOS &lt;= 26 for window titles</li>
+        <li>Fix CF ownership leaks across attr:/attrs:/Create results</li>
+        <li>Hover preview: debounce settle re-check with one timer; re-check hover once mouse settles</li>
+        <li>Keep App Exposé open over Space-zoomed window gaps; zoom auto-zoom nudges pointer before zooming; handle activateFromApplication when process is attached to Xcode; bound AX retry budget and keep space-change reads off main thread</li>
+    </ul>
+  </main>
+</body>
+</html>

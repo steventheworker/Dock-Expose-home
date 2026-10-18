@@ -32,8 +32,8 @@
         <h4>
           download link:
           <a style="word-break: break-all;"
-            href="https://github.com/steventheworker/Dock-Expose-home/releases/download/v4.00.3/Dock-Expose-4.00.3.zip"
-            >https://github.com/steventheworker/Dock-Expose-home/releases/download/v4.00.3/Dock-Expose-4.00.3.zip</a
+            href="https://github.com/steventheworker/Dock-Expose-home/releases/download/v4.00.4/Dock-Expose-4.00.4.zip"
+            >https://github.com/steventheworker/Dock-Expose-home/releases/download/v4.00.4/Dock-Expose-4.00.4.zip</a
           >
         </h4>
         <h1 id="introduction" style="margin-top: 1em">Introduction</h1>
@@ -43,7 +43,7 @@
           <p class="seo-text">Introducing Dock Expose, an app that gives a preview of your open applications. Dock Expose opens Apple's expose view in mission control. It does so automatically whenever you put your mouse under an application's dock's icon.</p>
         </p>
         <section class="release-info">
-          <h2>Dock Exposé 4.00.3</h2>
+          <h2>Dock Exposé 4.00.4</h2>
           <ul>
             <li>Rebuilt for modern macOS, with accumulated bug fixes.</li>
             <li>Close windows or hold Option to minimize them from Mission Control and App Exposé.</li>
@@ -65,6 +65,24 @@
       </header>
         <ul class="changelog youtubePreviewMode">
         <h4>Version Control / Changelog:</h4>
+          <li>
+            <ul>
+              <span>4.00.4 release</span>
+              <h7><a href="https://dockexpose.netlify.app/changelog-sparkle/releases/v4.00.4/">v4.00.4</a></h7>
+              <li>Fix window description race on title/subrole, filtering non-retryable attributes</li>
+              <li>Fix dead Window.subrole (dangling direct-ivar store)</li>
+              <li>Default Zoom Delay set to 1.2s; only nudge when switching windows</li>
+              <li>Escape undoes zoom, Return activates the zoomed window</li>
+              <li>Skip entry flash when cursor is already on an exposed window</li>
+              <li>Ensure folder preview on exposé close if mouse settled on dock folder</li>
+              <li>Sink expose controls behind Space key zoom in Mission Control &amp; App Exposé</li>
+              <li>Order minimized windows by space then minimize time</li>
+              <li>Fall back to Dock's mc group on macOS &lt;= 26 for window titles</li>
+              <li>Fix CF ownership leaks across attr:/attrs:/Create results</li>
+              <li>Hover preview: debounce settle re-check with one timer; re-check hover once mouse settles</li>
+              <li>Keep App Exposé open over Space-zoomed window gaps; zoom auto-zoom nudges pointer before zooming; handle activateFromApplication when process is attached to Xcode; bound AX retry budget and keep space-change reads off main thread</li>
+            </ul>
+          </li>
           <li>
             <ul>
               <span>4.00.3 release</span>
