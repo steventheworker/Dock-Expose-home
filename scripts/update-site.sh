@@ -1,11 +1,9 @@
 #!/bin/sh
-# Dock Exposé website edits (index.html, README, docs, changelogs, currentversion).
+# Dock Exposé website edits (index.html, README, docs, changelogs).
 # Called by scripts/publish-release.sh with VERSION, OLD_VERSION, DOWNLOAD_URL,
 # PUB_DATE_HUMAN, BULLETS_FILE, NOTES_URL, PRODUCT_NAME, RELEASE_ZIP_NAME.
 set -eu
 ROOT=$(CDPATH= cd -- "$(dirname -- "$0")/.." && pwd)
-
-printf '%s\n' "$VERSION" > "$ROOT/currentversion.txt"
 
 python3 - "$ROOT" "$VERSION" "$OLD_VERSION" "$DOWNLOAD_URL" "$PUB_DATE_HUMAN" "${BULLETS_FILE:-}" "$NOTES_URL" <<'PY'
 import html, pathlib, re, sys

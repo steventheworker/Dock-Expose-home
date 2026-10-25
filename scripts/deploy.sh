@@ -23,6 +23,10 @@ MODE=${1:-patch}
 [ -x "$PUBLISH_RELEASE" ] || { echo "error: publish-release.sh is not executable: $PUBLISH_RELEASE" >&2; exit 1; }
 [ -n "${RELEASE_ZIP_NAME:-}" ] || { echo "error: release.config.sh must set RELEASE_ZIP_NAME" >&2; exit 1; }
 
+# Pass notarization settings from release.config.sh to the app-side script.
+if [ -n "${TEAM_ID:-}" ]; then export TEAM_ID; fi
+if [ -n "${NOTARY_PROFILE:-}" ]; then export NOTARY_PROFILE; fi
+
 # Build the versioned ZIP (bumps MARKETING_VERSION/CURRENT_PROJECT_VERSION).
 "$MAKE_RELEASE" "$MODE"
 
