@@ -62,8 +62,14 @@ BUILD_VERSION=
 NOTES_URL=""
 NOTES_URL_EXPLICIT=0
 SIGN_UPDATE=${SPARKLE_SIGN_UPDATE:-}
-LLAMA_HEALTH_URL=${LLAMA_HEALTH_URL:-http://127.0.0.1:8001/health}
+# Release-notes model and the server that hosts it come from the /model tool
+# (`ai-model get release-notes` / `ai-model endpoint`). A repo may override the
+# model locally by setting RELEASE_NOTES_MODEL in release.config.sh.
+AI_MODEL_BIN=${AI_MODEL_BIN:-$HOME/.zshconfig/ai/bin/ai-model}
+RELEASE_NOTES_MODEL=${RELEASE_NOTES_MODEL:-$([ -x "$AI_MODEL_BIN" ] && "$AI_MODEL_BIN" get release-notes 2>/dev/null || true)}
 RELEASE_NOTES_MODEL=${RELEASE_NOTES_MODEL:-llamacpp_m4/Ling-3.0-tiny}
+RELEASE_NOTES_ENDPOINT=$([ -x "$AI_MODEL_BIN" ] && "$AI_MODEL_BIN" endpoint "$RELEASE_NOTES_MODEL" 2>/dev/null || true)
+LLAMA_HEALTH_URL=${LLAMA_HEALTH_URL:-${RELEASE_NOTES_ENDPOINT:-http://127.0.0.1:8001}/health}
 RELEASE_NOTES_TIMEOUT=${RELEASE_NOTES_TIMEOUT:-120}
 GENERATE_NOTES=0
 TAG_RELEASE=0
@@ -210,7 +216,9 @@ The changes are{extra}:
 pathlib.Path(prompt_path).write_text(prompt)
 PY
 
-    if curl --fail --silent --show-error --max-time 3 "$LLAMA_HEALTH_URL" >/dev/null 2>&1 && command -v pi >/dev/null 2>&1; then
+    # A cloud model has no endpoint (ai-model endpoint returns nothing): pi
+    # reaches it directly, so skip the local server health check.
+    if { [ -z "$RELEASE_NOTES_ENDPOINT" ] || curl --fail --silent --show-error --max-time 3 "$LLAMA_HEALTH_URL" >/dev/null 2>&1; } && command -v pi >/dev/null 2>&1; then
         if python3 - "$PROMPT_FILE" "$MODEL_OUTPUT" "$RELEASE_NOTES_MODEL" "$RELEASE_NOTES_TIMEOUT" <<'PY'
 import pathlib, subprocess, sys
 prompt_path, output_path, model, timeout = sys.argv[1:]
