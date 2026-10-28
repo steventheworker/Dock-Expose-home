@@ -26,8 +26,6 @@ You can also browse all releases on the [Dock Exposé GitHub Releases page](http
 4. Open the app from Applications.
 5. Complete the permissions setup when Dock Exposé asks for it.
 
-Dock Exposé is distributed unnotarized. If macOS prevents the first launch, Control-click or right-click the app, choose **Open**, and confirm that you want to open it. After the first launch, it can be opened normally.
-
 ## Required permissions (2)
 
 ### Accessibility
@@ -58,6 +56,10 @@ For more detail, see the [permissions and setup guide](https://dockexpose.netlif
 - Accessibility permission enabled
 - Screen Recording permission enabled
 - Full Disk Access optional, only for protected recent-document access
+
+## Troubleshooting:
+
+**Reset Permissions:** Quit the app before running: `tccutil reset All com.steventheworker.Dock-Expose`
 
 ## More information
 
