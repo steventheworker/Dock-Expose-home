@@ -1,0 +1,29 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Dock Exposé 4.00.8 release notes</title>
+  <link rel="stylesheet" href="/style.css" />
+</head>
+<body>
+  <main>
+    <p class="back"><a href="/changelog-sparkle">&larr; Changelog</a></p>
+    <h1>Dock Exposé 4.00.8 release notes</h1>
+    <p>Changes since <code>v4.00.7</code>:</p>
+    <ul>
+        <li>Add a Repeat Delay slider for hold-to-repeat arrow switching</li>
+        <li>Hold-to-repeat for Control+Left/Right space switching</li>
+        <li>target the display under the mouse</li>
+        <li>queue instead of dropping during a switch, resolve on the tap thread</li>
+        <li>flag currentlySwitchingSpaces, CGSSpaceID nextSpaceSwitchTarget (schedule next space after current switch finishes)</li>
+        <li>stop running multiple [spaces refresh] at a time</li>
+        <li>] nudge space or go to space ±1 and ctrl+left/right (fixes glitch where CGSCopyManagedDisplayForSpace causes current space windows to join destination space until nudge (and nudge doesn&#x27;t work for 1st and last spact in monitor so we do ±1 trick))</li>
+        <li>Add space digit shortcuts and group preferences into sections</li>
+        <li>don&#x27;t re-open after a scroll-to-close</li>
+        <li>don&#x27;t re-open after a user Escape</li>
+        <li>bump version</li>
+    </ul>
+  </main>
+</body>
+</html>

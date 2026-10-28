@@ -32,8 +32,8 @@
         <h4>
           download link:
           <a style="word-break: break-all;"
-            href="https://github.com/steventheworker/Dock-Expose-home/releases/download/v4.00.7/Dock-Expose-4.00.7.zip"
-            >https://github.com/steventheworker/Dock-Expose-home/releases/download/v4.00.7/Dock-Expose-4.00.7.zip</a
+            href="https://github.com/steventheworker/Dock-Expose-home/releases/download/v4.00.8/Dock-Expose-4.00.8.zip"
+            >https://github.com/steventheworker/Dock-Expose-home/releases/download/v4.00.8/Dock-Expose-4.00.8.zip</a
           >
         </h4>
         <h1 id="introduction" style="margin-top: 1em">Introduction</h1>
@@ -43,7 +43,7 @@
           <p class="seo-text">Introducing Dock Expose, an app that gives a preview of your open applications. Dock Expose opens Apple's expose view in mission control. It does so automatically whenever you put your mouse under an application's dock's icon.</p>
         </p>
         <section class="release-info">
-          <h2>Dock Exposé 4.00.7</h2>
+          <h2>Dock Exposé 4.00.8</h2>
           <ul>
             <li>Rebuilt for modern macOS, with accumulated bug fixes.</li>
             <li>Close windows or hold Option to minimize them from Mission Control and App Exposé.</li>
@@ -65,6 +65,23 @@
       </header>
         <ul class="changelog youtubePreviewMode">
         <h4>Version Control / Changelog:</h4>
+          <li>
+            <ul>
+              <span>4.00.8 release</span>
+              <h7><a href="https://dockexpose.netlify.app/changelog-sparkle/releases/v4.00.8/">v4.00.8</a></h7>
+              <li>Add a Repeat Delay slider for hold-to-repeat arrow switching</li>
+              <li>Hold-to-repeat for Control+Left/Right space switching</li>
+              <li>target the display under the mouse</li>
+              <li>queue instead of dropping during a switch, resolve on the tap thread</li>
+              <li>flag currentlySwitchingSpaces, CGSSpaceID nextSpaceSwitchTarget (schedule next space after current switch finishes)</li>
+              <li>stop running multiple [spaces refresh] at a time</li>
+              <li>] nudge space or go to space ±1 and ctrl+left/right (fixes glitch where CGSCopyManagedDisplayForSpace causes current space windows to join destination space until nudge (and nudge doesn't work for 1st and last spact in monitor so we do ±1 trick))</li>
+              <li>Add space digit shortcuts and group preferences into sections</li>
+              <li>don't re-open after a scroll-to-close</li>
+              <li>don't re-open after a user Escape</li>
+              <li>bump version</li>
+            </ul>
+          </li>
           <li>
             <ul>
               <span>4.00.7 release</span>
