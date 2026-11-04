@@ -12,9 +12,9 @@ Dock Exposé is a macOS app that lets you preview apps and folders on the dock v
 
 ### Dock Exposé app download link:
 
-Latest release: **Dock Exposé 4.00.8**
+Latest release: **Dock Exposé 4.00.9**
 
-https://github.com/steventheworker/Dock-Expose-home/releases/download/v4.00.8/Dock-Expose-4.00.8.zip
+https://github.com/steventheworker/Dock-Expose-home/releases/download/v4.00.9/Dock-Expose-4.00.9.zip
 
 You can also browse all releases on the [Dock Exposé GitHub Releases page](https://github.com/steventheworker/Dock-Expose-home/releases).
 
