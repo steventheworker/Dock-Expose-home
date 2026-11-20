@@ -1,0 +1,7 @@
+- Added space digit shortcuts for quick navigation between spaces
+- Space digit shortcuts now target the display under your mouse cursor
+- Space digit shortcuts queue during active space switches instead of dropping
+- Added a Repeat Delay slider in Preferences to control hold-to-repeat timing
+- Hold-to-repeat now works for Control+Left/Right arrow space switching
+- Fixed Dock hover previews reopening after scrolling to close or pressing Escape
+- Fixed a glitch where switching spaces would temporarily show windows from the destination space
