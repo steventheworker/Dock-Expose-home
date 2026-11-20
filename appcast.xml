@@ -4,6 +4,18 @@
       <title>Dock Exposé</title>
       <language>en</language>
       <item>
+         <title>Version 4.00.11</title>
+         <pubDate>Thu, 19 Nov 2026 20:34:42 -0800</pubDate>
+         <sparkle:minimumSystemVersion>26.0</sparkle:minimumSystemVersion>
+         <sparkle:releaseNotesLink>https://dockexpose.netlify.app/changelog-sparkle/releases/v4.00.11/</sparkle:releaseNotesLink>
+         <enclosure
+            url="https://github.com/steventheworker/Dock-Expose-home/releases/download/v4.00.11/Dock-Expose-4.00.11.zip"
+            sparkle:version="40011"
+            sparkle:shortVersionString="4.00.11"
+            sparkle:edSignature="2EsN8GFZT9BWx28uM9lcYfh8toxWZ2pNP48R6mptEEBdjoq6osiEsw3w8smfqCHlXQ69ccnrNFYSCGhPPTE1CQ==" length="1223231"
+            type="application/octet-stream"/>
+      </item>
+      <item>
          <title>Version 4.00.10</title>
          <pubDate>Tue, 17 Nov 2026 19:02:03 -0800</pubDate>
          <sparkle:minimumSystemVersion>26.0</sparkle:minimumSystemVersion>
